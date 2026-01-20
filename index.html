@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="color-scheme" content="dark" />
+    <title>Zero Delta LLC</title>
+    <style>
+      :root {
+        --bg: #0d1117;
+        --text: #c9d1d9;
+        --border: #30363d;
+        --link: #58a6ff;
+        --status: #2ea043;
+        --muted: #8b949e;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        margin: 0;
+        background: var(--bg);
+        color: var(--text);
+        font-family: "Courier New", Courier, monospace;
+        line-height: 1.55;
+      }
+
+      a {
+        color: var(--link);
+        text-decoration: none;
+      }
+
+      a:hover {
+        text-decoration: underline;
+      }
+
+      a:focus-visible {
+        outline: 2px solid var(--link);
+        outline-offset: 3px;
+        border-radius: 4px;
+      }
+
+      .skip-link {
+        position: absolute;
+        left: -999px;
+        top: 8px;
+        padding: 8px 10px;
+        background: var(--bg);
+        border: 1px solid var(--border);
+        border-radius: 8px;
+      }
+
+      .skip-link:focus-visible {
+        left: 8px;
+        z-index: 2;
+      }
+
+      .wrap {
+        min-height: 100svh;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        padding: 20px;
+      }
+
+      .terminal {
+        width: 100%;
+        max-width: 600px;
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        padding: 22px;
+      }
+
+      header {
+        margin-bottom: 18px;
+      }
+
+      h1 {
+        font-size: 1.6rem;
+        margin: 0;
+        letter-spacing: 0.2px;
+      }
+
+      .cursor {
+        display: inline-block;
+        margin-left: 2px;
+        transform: translateY(-1px);
+        animation: blink 1.1s steps(2, end) infinite;
+      }
+
+      @keyframes blink {
+        0%,
+        49% {
+          opacity: 1;
+        }
+        50%,
+        100% {
+          opacity: 0;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cursor {
+          animation: none;
+        }
+      }
+
+      .tagline {
+        margin: 10px 0 0;
+        color: var(--text);
+      }
+
+      .status-line {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin: 18px 0 16px;
+        color: var(--text);
+      }
+
+      .status-dot {
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--status);
+        box-shadow: 0 0 0 2px rgba(46, 160, 67, 0.14);
+        flex: 0 0 auto;
+      }
+
+      .section {
+        margin-top: 16px;
+      }
+
+      .section-title {
+        font-size: 0.95rem;
+        margin: 0 0 10px;
+        color: var(--muted);
+      }
+
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: grid;
+        gap: 8px;
+      }
+
+      .kv {
+        display: flex;
+        gap: 10px;
+        flex-wrap: wrap;
+      }
+
+      .k {
+        color: var(--muted);
+        min-width: 70px;
+      }
+
+      .codeblock {
+        border: 1px solid var(--border);
+        border-radius: 10px;
+        padding: 12px 12px;
+        margin: 0;
+        overflow-x: auto;
+        background: rgba(255, 255, 255, 0.02);
+      }
+
+      .codeblock code {
+        font-family: inherit;
+        font-size: 0.95rem;
+        white-space: pre;
+      }
+
+      footer {
+        margin-top: 18px;
+        padding-top: 14px;
+        border-top: 1px solid var(--border);
+        color: var(--muted);
+        font-size: 0.92rem;
+      }
+
+      footer p {
+        margin: 6px 0 0;
+      }
+
+      .sr-only {
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        padding: 0;
+        margin: -1px;
+        overflow: hidden;
+        clip: rect(0, 0, 0, 0);
+        white-space: nowrap;
+        border: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <a class="skip-link" href="#content">Skip to content</a>
+
+    <div class="wrap">
+      <main id="content" class="terminal">
+        <header>
+          <h1>
+            &gt; ZERO DELTA LLC<span class="cursor" aria-hidden="true">_</span>
+            <span class="sr-only">Zero Delta LLC</span>
+          </h1>
+          <p class="tagline">Cloud Architecture &amp; Infrastructure Automation</p>
+        </header>
+
+        <p class="status-line">
+          <span class="status-dot" aria-hidden="true"></span>
+          <span>Status: <strong>OPERATIONAL</strong></span>
+        </p>
+
+        <section class="section" aria-labelledby="links-title">
+          <h2 id="links-title" class="section-title">Links</h2>
+          <nav aria-label="Contact and profiles">
+            <ul>
+              <li class="kv">
+                <span class="k">Email</span>
+                <a href="mailto:dave@zdelta.dev">dave@zdelta.dev</a>
+              </li>
+              <li class="kv">
+                <span class="k">GitHub</span>
+                <a href="https://github.com/dave-schmidt-dev">github.com/dave-schmidt-dev</a>
+              </li>
+              <li class="kv">
+                <span class="k">LinkedIn</span>
+                <a href="https://linkedin.com/in/dave-schmidt-dev">linkedin.com/in/dave-schmidt-dev</a>
+              </li>
+            </ul>
+          </nav>
+        </section>
+
+        <footer>
+          <p>Registered: Commonwealth of Virginia</p>
+          <p>C2C Ready | W-9 Available on Request</p>
+        </footer>
+      </main>
+    </div>
+  </body>
+</html>
