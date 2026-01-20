@@ -5,6 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="color-scheme" content="dark" />
     <title>Zero Delta LLC</title>
+    <meta name="description" content="Cloud Architecture & Infrastructure Automation services by Zero Delta LLC." />
+    <meta property="og:title" content="Zero Delta LLC" />
+    <meta property="og:description" content="Cloud Architecture & Infrastructure Automation." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://zerodelta.dev" />
+    <link rel="canonical" href="https://zerodelta.dev" />
+    <link
+      rel="icon"
+      href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'><text x='0' y='14' fill='%232ea043' font-family='monospace' font-weight='bold' font-size='16'>&gt;</text></svg>"
+    />
+
     <style>
       :root {
         --bg: #0d1117;
@@ -13,6 +24,7 @@
         --link: #58a6ff;
         --status: #2ea043;
         --muted: #8b949e;
+        --shadow: rgba(0, 0, 0, 0.5);
       }
 
       * {
@@ -28,23 +40,28 @@
         margin: 0;
         background: var(--bg);
         color: var(--text);
-        font-family: "Courier New", Courier, monospace;
-        line-height: 1.55;
+        font-family: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas,
+          "Liberation Mono", monospace;
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
       }
 
       a {
         color: var(--link);
         text-decoration: none;
+        transition: color 0.2s ease;
       }
 
       a:hover {
         text-decoration: underline;
+        text-decoration-thickness: 1px;
+        text-underline-offset: 2px;
       }
 
       a:focus-visible {
         outline: 2px solid var(--link);
-        outline-offset: 3px;
-        border-radius: 4px;
+        outline-offset: 2px;
+        border-radius: 2px;
       }
 
       .skip-link {
@@ -54,12 +71,14 @@
         padding: 8px 10px;
         background: var(--bg);
         border: 1px solid var(--border);
-        border-radius: 8px;
+        border-radius: 6px;
+        font-size: 0.9rem;
+        color: var(--link);
+        z-index: 100;
       }
 
       .skip-link:focus-visible {
         left: 8px;
-        z-index: 2;
       }
 
       .wrap {
@@ -75,23 +94,30 @@
         max-width: 600px;
         border: 1px solid var(--border);
         border-radius: 12px;
-        padding: 22px;
+        padding: 32px;
+        background: var(--bg);
+        box-shadow: 0 20px 50px -10px var(--shadow);
       }
 
       header {
-        margin-bottom: 18px;
+        margin-bottom: 24px;
       }
 
       h1 {
-        font-size: 1.6rem;
+        font-size: 1.5rem;
         margin: 0;
-        letter-spacing: 0.2px;
+        font-weight: 600;
+        letter-spacing: -0.5px;
+        color: #fff;
       }
 
       .cursor {
         display: inline-block;
-        margin-left: 2px;
-        transform: translateY(-1px);
+        width: 0.6em;
+        height: 1.2em;
+        background-color: var(--text);
+        vertical-align: text-bottom;
+        margin-left: 4px;
         animation: blink 1.1s steps(2, end) infinite;
       }
 
@@ -106,42 +132,58 @@
         }
       }
 
-      @media (prefers-reduced-motion: reduce) {
-        .cursor {
-          animation: none;
-        }
-      }
-
       .tagline {
-        margin: 10px 0 0;
-        color: var(--text);
+        margin: 8px 0 0;
+        color: var(--muted);
+        font-size: 1rem;
       }
 
       .status-line {
         display: flex;
         align-items: center;
         gap: 10px;
-        margin: 18px 0 16px;
-        color: var(--text);
+        margin: 24px 0;
+        padding: 12px;
+        border: 1px solid var(--border);
+        border-radius: 8px;
+        background: rgba(255, 255, 255, 0.01);
       }
 
       .status-dot {
-        width: 10px;
-        height: 10px;
-        border-radius: 999px;
+        width: 8px;
+        height: 8px;
+        border-radius: 50%;
         background: var(--status);
-        box-shadow: 0 0 0 2px rgba(46, 160, 67, 0.14);
-        flex: 0 0 auto;
+        box-shadow: 0 0 0 0 rgba(46, 160, 67, 0.7);
+        animation: pulse 2s infinite;
+      }
+
+      @keyframes pulse {
+        0% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(46, 160, 67, 0.7);
+        }
+        70% {
+          transform: scale(1);
+          box-shadow: 0 0 0 6px rgba(46, 160, 67, 0);
+        }
+        100% {
+          transform: scale(0.95);
+          box-shadow: 0 0 0 0 rgba(46, 160, 67, 0);
+        }
       }
 
       .section {
-        margin-top: 16px;
+        margin-top: 32px;
       }
 
       .section-title {
-        font-size: 0.95rem;
-        margin: 0 0 10px;
+        font-size: 0.85rem;
+        text-transform: uppercase;
+        letter-spacing: 1px;
+        margin: 0 0 16px;
         color: var(--muted);
+        font-weight: 600;
       }
 
       nav ul {
@@ -149,45 +191,44 @@
         padding: 0;
         margin: 0;
         display: grid;
-        gap: 8px;
+        gap: 12px;
       }
 
       .kv {
         display: flex;
-        gap: 10px;
-        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: center;
+        padding: 8px 0;
+        border-bottom: 1px solid rgba(48, 54, 61, 0.4);
+      }
+
+      .kv:last-child {
+        border-bottom: none;
       }
 
       .k {
         color: var(--muted);
-        min-width: 70px;
-      }
-
-      .codeblock {
-        border: 1px solid var(--border);
-        border-radius: 10px;
-        padding: 12px 12px;
-        margin: 0;
-        overflow-x: auto;
-        background: rgba(255, 255, 255, 0.02);
-      }
-
-      .codeblock code {
-        font-family: inherit;
         font-size: 0.95rem;
-        white-space: pre;
       }
 
       footer {
-        margin-top: 18px;
-        padding-top: 14px;
+        margin-top: 40px;
+        padding-top: 20px;
         border-top: 1px solid var(--border);
         color: var(--muted);
-        font-size: 0.92rem;
+        font-size: 0.85rem;
+        text-align: center;
       }
 
       footer p {
-        margin: 6px 0 0;
+        margin: 4px 0;
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        .cursor,
+        .status-dot {
+          animation: none;
+        }
       }
 
       .sr-only {
@@ -210,19 +251,19 @@
       <main id="content" class="terminal">
         <header>
           <h1>
-            &gt; ZERO DELTA LLC<span class="cursor" aria-hidden="true">_</span>
-            <span class="sr-only">Zero Delta LLC</span>
+            &gt; ZERO DELTA LLC<span class="cursor" aria-hidden="true"></span>
+            <span class="sr-only">_</span>
           </h1>
           <p class="tagline">Cloud Architecture &amp; Infrastructure Automation</p>
         </header>
 
-        <p class="status-line">
+        <div class="status-line">
           <span class="status-dot" aria-hidden="true"></span>
           <span>Status: <strong>OPERATIONAL</strong></span>
-        </p>
+        </div>
 
         <section class="section" aria-labelledby="links-title">
-          <h2 id="links-title" class="section-title">Links</h2>
+          <h2 id="links-title" class="section-title">Connect</h2>
           <nav aria-label="Contact and profiles">
             <ul>
               <li class="kv">
@@ -231,11 +272,11 @@
               </li>
               <li class="kv">
                 <span class="k">GitHub</span>
-                <a href="https://github.com/dave-schmidt-dev">github.com/dave-schmidt-dev</a>
+                <a href="https://github.com/dave-schmidt-dev">@dave-schmidt-dev</a>
               </li>
               <li class="kv">
                 <span class="k">LinkedIn</span>
-                <a href="https://linkedin.com/in/dave-schmidt-dev">linkedin.com/in/dave-schmidt-dev</a>
+                <a href="https://linkedin.com/in/dave-schmidt-dev">/in/dave-schmidt-dev</a>
               </li>
             </ul>
           </nav>
